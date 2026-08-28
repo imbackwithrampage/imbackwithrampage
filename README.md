@@ -29,7 +29,7 @@
 
 <h3><code>sunil@github ~ $ ./links.sh</code></h3>
 
-<p><b>Sunil Sachindar S A · Fullstack Developer · AI Engineer · Builder</b></p>
+<p><b>Sunil Sachindar S A · AI Automation Developer @ Google DeepMind · AI Researcher &amp; Builder</b></p>
 
 [![GitHub](https://img.shields.io/badge/GitHub-imbackwithrampage-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/imbackwithrampage)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-sunil--sachindar-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sunil-sachindar)

@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 """
 Generate a rich, Neofetch-style terminal info card SVG for Sunil Sachindar S A
-based on his official resume and GitHub profile.
-Ensures 100% strict XML well-formedness for GitHub Camo.
+based on his official experience:
+- AI Automation Developer @ Google DeepMind
+- AI Research (NIT Trichy - SLMs & Agentic AI)
+- Robotics & Edge AI (PSGCET - Humanoid Robot, Jetson Nano, ROS)
+- NASA Space Apps Global Nominee & Galactic Impact Award
+- IEEE & Robotics Journal Published Author
+- Fullstack & Systems Stack (Python, C++, Kotlin, PyTorch, ROS, GCP, Docker)
 """
 import html
 import os
@@ -33,15 +38,15 @@ ACCENT_PINK = "#f778ba"
 
 info_items = [
     ("Host", "imbackwithrampage (Neural Core / x86_64)", ACCENT_PURPLE),
-    ("Role", "AI Research Intern · Robotics & Fullstack Engineer", ACCENT_YELLOW),
-    ("Research", "Agentic AI & SLMs (NIT Trichy) · Humanoid Robotics (PSGCET)", ACCENT_CYAN),
-    ("Languages", "Python, Kotlin, Java, C++, TypeScript, Go, SQL", ACCENT_GREEN),
-    ("AI / Robotics", "PyTorch, TensorFlow, ROS, MediaPipe, OpenCV, Jetson Nano", ACCENT_BLUE),
+    ("Now", "AI Automation Developer @ Google DeepMind", ACCENT_CYAN),
+    ("Role", "AI Engineer · Robotics & Autonomous Agent Builder", ACCENT_YELLOW),
+    ("Research", "Agentic AI & SLMs (NIT Trichy) · Humanoid Robotics (PSGCET)", ACCENT_GREEN),
+    ("Languages", "Python, Kotlin, Java, C++, TypeScript, Go, SQL", ACCENT_BLUE),
+    ("AI / Robotics", "PyTorch, TensorFlow, ROS, MediaPipe, OpenCV, Jetson Nano", ACCENT_PINK),
     ("Cloud & Ops", "GCP, Docker, Kubernetes, Apache Spark, Airflow, CI/CD", ACCENT_ORANGE),
-    ("Publications", "IEEE Embedded Systems Conf '24 · Robotics & Autonomous Systems", ACCENT_PINK),
+    ("Publications", "IEEE Embedded Systems Conf '24 · Robotics & Autonomous Systems", ACCENT_PURPLE),
     ("Honors", "NASA Space Apps Global Nominee · GCP Codeathon (Top 3)", ACCENT_YELLOW),
     ("Leadership", "GDG Cloud Computing Lead (7k+ devs) · Robotics Club President", ACCENT_CYAN),
-    ("Philosophy", "Pioneering Brain-Computer Interfaces & Autonomous Agents", ACCENT_GREEN),
 ]
 
 parts = [
@@ -106,7 +111,7 @@ for label, val, color in info_items:
     parts.append(line_svg)
     cur_y += line_h
 
-# Color Palette block (classic neofetch color bar)
+# Color Palette block
 current_delay += delay_step
 palette_y = cur_y + 14
 colors_row1 = ["#1f242c", "#f85149", "#3fb950", "#d29922", "#58a6ff", "#bc8cff", "#22d3ee", "#e6edf3"]
@@ -139,8 +144,8 @@ parts.append(
     f'<text x="{PAD+132}" y="{bot_y}" fill="{MUTED}" font-size="13.5">:</text>'
     f'<text x="{PAD+144}" y="{bot_y}" fill="{ACCENT_YELLOW}" font-size="13.5">~</text>'
     f'<text x="{PAD+156}" y="{bot_y}" fill="{TEXT}" font-size="13.5">$</text>'
-    f'<text x="{PAD+174}" y="{bot_y}" fill="{MUTED}" font-size="13.5">echo &quot;Transcending human limitations through AI &amp; neural tech.&quot;</text>'
-    f'<rect x="{PAD+695}" y="{bot_y-12}" width="8" height="15" fill="{ACCENT_CYAN}">'
+    f'<text x="{PAD+174}" y="{bot_y}" fill="{MUTED}" font-size="13.5">echo &quot;Building autonomous agents &amp; AI automation @ Google DeepMind.&quot;</text>'
+    f'<rect x="{PAD+735}" y="{bot_y-12}" width="8" height="15" fill="{ACCENT_CYAN}">'
     f'<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.5;0.51;1" dur="1s" repeatCount="indefinite"/></rect>'
     f'</g>'
 )

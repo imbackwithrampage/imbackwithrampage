@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 """
-Generate a GitHub-safe Neofetch-style terminal info card SVG for Sunil Sachindar S A.
-Uses pure SMIL animations (native in GitHub <img> embedding, no unsafe CSS or filters).
+Generate a rich, Neofetch-style terminal info card SVG for Sunil Sachindar S A
+based on his official resume and GitHub profile:
+- AI Research (NIT Trichy - SLMs & Agentic AI)
+- Robotics & Edge AI (PSGCET - Humanoid Robot, Jetson Nano, ROS)
+- NASA Space Apps Global Nominee & Galactic Impact Award
+- IEEE & Robotics Journal Published Author
+- Fullstack & Systems Stack (Python, C++, Kotlin, PyTorch, ROS, GCP, Docker)
 """
 import html
 import os
@@ -27,18 +32,19 @@ ACCENT_GREEN = "#3fb950"
 ACCENT_PURPLE = "#bc8cff"
 ACCENT_YELLOW = "#e3b341"
 ACCENT_ORANGE = "#f0883e"
+ACCENT_PINK = "#f778ba"
 
 info_items = [
-    ("OS", "Arch Linux / macOS / Neural Core x86_64", ACCENT_CYAN),
-    ("Host", "imbackwithrampage", ACCENT_PURPLE),
-    ("Kernel", "6.12.0-sunil-prod #1 SMP PREEMPT", MUTED),
-    ("Uptime", "24/7 Deep Learning & Fullstack Flow", ACCENT_GREEN),
-    ("Role", "Full Stack Developer · AI Engineer · Builder", ACCENT_YELLOW),
-    ("Languages", "Python, TypeScript, JavaScript, Go, C++, Rust", ACCENT_CYAN),
-    ("Frameworks", "React, Next.js, FastAPI, Node.js, PyTorch", ACCENT_BLUE),
-    ("Cloud / Ops", "Docker, Kubernetes, AWS, GCP, GitHub Actions", ACCENT_ORANGE),
-    ("Interests", "LLMs, Computer Vision, Autonomous Agents", ACCENT_GREEN),
-    ("Current Focus", "High-performance Agentic Systems & Real-time AI", ACCENT_YELLOW),
+    ("Host", "imbackwithrampage (Neural Core / x86_64)", ACCENT_PURPLE),
+    ("Role", "AI Research Intern · Robotics & Fullstack Engineer", ACCENT_YELLOW),
+    ("Research", "Agentic AI & SLMs (NIT Trichy) · Humanoid Robotics (PSGCET)", ACCENT_CYAN),
+    ("Languages", "Python, Kotlin, Java, C++, TypeScript, Go, SQL", ACCENT_GREEN),
+    ("AI / Robotics", "PyTorch, TensorFlow, ROS, MediaPipe, OpenCV, Jetson Nano", ACCENT_BLUE),
+    ("Cloud & Ops", "GCP, Docker, Kubernetes, Apache Spark, Airflow, CI/CD", ACCENT_ORANGE),
+    ("Publications", "IEEE Embedded Systems Conf '24 · Robotics & Autonomous Systems", ACCENT_PINK),
+    ("Honors", "NASA Space Apps Global Nominee · GCP Codeathon (Top 3)", ACCENT_YELLOW),
+    ("Leadership", "GDG Cloud Computing Lead (7k+ devs) · Robotics Club President", ACCENT_CYAN),
+    ("Philosophy", "Pioneering Brain-Computer Interfaces & Autonomous Agents", ACCENT_GREEN),
 ]
 
 parts = [
@@ -58,12 +64,12 @@ parts = [
 for i, dotcol in enumerate(["#ff5f56", "#ffbd2e", "#27c93f"]):
     parts.append(f'<circle cx="{PAD + i*18}" cy="{TITLEBAR_H/2}" r="5" fill="{dotcol}"/>')
 
-parts.append(f'<text x="{CANVAS_W/2}" y="{TITLEBAR_H/2 + 4}" fill="{TITLE_TEXT}" font-size="12" font-weight="600" text-anchor="middle">sunil@rampage: ~$ neofetch</text>')
+parts.append(f'<text x="{CANVAS_W/2}" y="{TITLEBAR_H/2 + 4}" fill="{TITLE_TEXT}" font-size="12" font-weight="600" text-anchor="middle">sunil@rampage: ~$ neofetch --profile</text>')
 
-start_y = TITLEBAR_H + 42
+start_y = TITLEBAR_H + 38
 line_h = 42
 delay_step = 0.08
-current_delay = 0.12
+current_delay = 0.10
 
 # Header banner
 parts.append(
@@ -73,12 +79,13 @@ parts.append(
     f'<tspan fill="{ACCENT_CYAN}">sunil</tspan>'
     f'<tspan fill="{MUTED}">@</tspan>'
     f'<tspan fill="{ACCENT_PURPLE}">imbackwithrampage</tspan>'
+    f'<tspan fill="{MUTED}" font-size="13" font-weight="400"> (Sunil Sachindar S A)</tspan>'
     f'</text>'
     f'</g>'
 )
 
 current_delay += delay_step
-sep_y = start_y + 16
+sep_y = start_y + 14
 parts.append(
     f'<g opacity="0">'
     f'<set attributeName="opacity" to="1" begin="{current_delay:.2f}s"/>'
@@ -93,9 +100,9 @@ for label, val, color in info_items:
     line_svg = (
         f'<g opacity="0">'
         f'<set attributeName="opacity" to="1" begin="{current_delay:.2f}s"/>'
-        f'<text x="{PAD+8}" y="{cur_y}" font-size="14" font-weight="700" fill="{color}">{label:<14}</text>'
-        f'<text x="{PAD+150}" y="{cur_y}" font-size="14" fill="{MUTED}">~ </text>'
-        f'<text x="{PAD+172}" y="{cur_y}" font-size="14" fill="{TEXT}">{safe_val}</text>'
+        f'<text x="{PAD+8}" y="{cur_y}" font-size="13.5" font-weight="700" fill="{color}">{label:<14}</text>'
+        f'<text x="{PAD+145}" y="{cur_y}" font-size="13.5" fill="{MUTED}">~ </text>'
+        f'<text x="{PAD+168}" y="{cur_y}" font-size="13.5" fill="{TEXT}">{safe_val}</text>'
         f'</g>'
     )
     parts.append(line_svg)
@@ -130,12 +137,12 @@ parts.append(
     f'<g opacity="0">'
     f'<set attributeName="opacity" to="1" begin="{current_delay:.2f}s"/>'
     f'<line x1="{PAD+8}" y1="{bot_sep_y}" x2="{CANVAS_W-PAD-8}" y2="{bot_sep_y}" stroke="{FRAME}" stroke-width="1"/>'
-    f'<text x="{PAD+8}" y="{bot_y}" fill="{ACCENT_CYAN}" font-size="14" font-weight="700">sunil@rampage</text>'
-    f'<text x="{PAD+136}" y="{bot_y}" fill="{MUTED}" font-size="14">:</text>'
-    f'<text x="{PAD+148}" y="{bot_y}" fill="{ACCENT_YELLOW}" font-size="14">~</text>'
-    f'<text x="{PAD+160}" y="{bot_y}" fill="{TEXT}" font-size="14">$</text>'
-    f'<text x="{PAD+178}" y="{bot_y}" fill="{MUTED}" font-size="14">echo &quot;Ready to build the future.&quot;</text>'
-    f'<rect x="{PAD+486}" y="{bot_y-12}" width="8" height="15" fill="{ACCENT_CYAN}">'
+    f'<text x="{PAD+8}" y="{bot_y}" fill="{ACCENT_CYAN}" font-size="13.5" font-weight="700">sunil@rampage</text>'
+    f'<text x="{PAD+132}" y="{bot_y}" fill="{MUTED}" font-size="13.5">:</text>'
+    f'<text x="{PAD+144}" y="{bot_y}" fill="{ACCENT_YELLOW}" font-size="13.5">~</text>'
+    f'<text x="{PAD+156}" y="{bot_y}" fill="{TEXT}" font-size="13.5">$</text>'
+    f'<text x="{PAD+174}" y="{bot_y}" fill="{MUTED}" font-size="13.5">echo &quot;Transcending human limitations through AI &amp; neural tech.&quot;</text>'
+    f'<rect x="{PAD+695}" y="{bot_y-12}" width="8" height="15" fill="{ACCENT_CYAN}">'
     f'<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.5;0.51;1" dur="1s" repeatCount="indefinite"/></rect>'
     f'</g>'
 )

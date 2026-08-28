@@ -10,7 +10,7 @@
 <table>
 <tr>
 <td valign="top"><img src="./sunil-ascii.svg" width="370" alt="Sunil Sachindar S A — ASCII portrait" /></td>
-<td valign="top"><img src="./info-card.svg" width="490" alt="Sunil Sachindar S A — Terminal Info Card" /></td>
+<td valign="top"><img src="./sunil-info-card.svg" width="490" alt="Sunil Sachindar S A — Terminal Info Card" /></td>
 </tr>
 </table>
 

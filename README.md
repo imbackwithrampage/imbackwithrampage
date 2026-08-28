@@ -32,8 +32,8 @@
 <p><b>Sunil Sachindar S A · Fullstack Developer · AI Engineer · Builder</b></p>
 
 [![GitHub](https://img.shields.io/badge/GitHub-imbackwithrampage-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/imbackwithrampage)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Sunil_Sachindar_S_A-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/imbackwithrampage)
-[![Email](https://img.shields.io/badge/Email-Contact_Me-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sunilsachindar@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-sunil--sachindar-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sunil-sachindar)
+[![Email](https://img.shields.io/badge/Email-sunilsachindarsa1205%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sunilsachindarsa1205@gmail.com)
 
 <br>
 

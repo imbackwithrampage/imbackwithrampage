@@ -1,16 +1,13 @@
 #!/usr/bin/env python3
 """
 Generate a rich, Neofetch-style terminal info card SVG for Sunil Sachindar S A
-based on his official resume and GitHub profile:
-- AI Research (NIT Trichy - SLMs & Agentic AI)
-- Robotics & Edge AI (PSGCET - Humanoid Robot, Jetson Nano, ROS)
-- NASA Space Apps Global Nominee & Galactic Impact Award
-- IEEE & Robotics Journal Published Author
-- Fullstack & Systems Stack (Python, C++, Kotlin, PyTorch, ROS, GCP, Docker)
+based on his official resume and GitHub profile.
+Ensures 100% strict XML well-formedness for GitHub Camo.
 """
 import html
 import os
 import sys
+import xml.etree.ElementTree as ET
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "..", "info-card.svg")
@@ -96,11 +93,12 @@ parts.append(
 cur_y = sep_y + 36
 for label, val, color in info_items:
     current_delay += delay_step
+    safe_label = html.escape(label)
     safe_val = html.escape(val)
     line_svg = (
         f'<g opacity="0">'
         f'<set attributeName="opacity" to="1" begin="{current_delay:.2f}s"/>'
-        f'<text x="{PAD+8}" y="{cur_y}" font-size="13.5" font-weight="700" fill="{color}">{label:<14}</text>'
+        f'<text x="{PAD+8}" y="{cur_y}" font-size="13.5" font-weight="700" fill="{color}">{safe_label}</text>'
         f'<text x="{PAD+145}" y="{cur_y}" font-size="13.5" fill="{MUTED}">~ </text>'
         f'<text x="{PAD+168}" y="{cur_y}" font-size="13.5" fill="{TEXT}">{safe_val}</text>'
         f'</g>'
@@ -149,6 +147,14 @@ parts.append(
 
 parts.append("</svg>")
 svg = "".join(parts)
+
+# Strict XML Validation
+try:
+    ET.fromstring(svg)
+    print("XML Validation PASSED")
+except Exception as e:
+    print("XML Validation FAILED:", e)
+    sys.exit(1)
 
 with open(OUT, "w", encoding="utf-8") as f:
     f.write(svg)
